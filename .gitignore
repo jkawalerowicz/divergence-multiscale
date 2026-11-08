@@ -1,5 +1,6 @@
 .Rproj.user
-data/
+data/*
+!data/simulated_grid_2022.csv
 results/DI_local_cells.csv
 .Rhistory
 .RData

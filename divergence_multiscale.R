@@ -22,7 +22,7 @@ dir.create("results", showWarnings = FALSE)
 # -----------------------------------------------------------------------------
 # Data: one row per 100 m cell (e, n = lower-left corner, SWEREF99 TM)
 # -----------------------------------------------------------------------------
-cnt <- read_csv("data/stockholm_2022_10km_buffer.csv", show_col_types = FALSE,
+cnt <- read_csv("data/simulated_grid_2022.csv", show_col_types = FALSE,
                 col_select = c(year, municipality, e, n, sb, fb_e, fb_ne)) %>%
   filter(year == 2022) %>%
   transmute(x = e, y = n, municipality, sb, fb_e, fb_ne,
