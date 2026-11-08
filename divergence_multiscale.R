@@ -97,7 +97,7 @@ ggsave("results/fig_DI_by_radius.png", width = 6, height = 4, dpi = 200,
          geom_point(size = 2) +
          scale_x_continuous(breaks = c(150, 300, 600, 1000)) +
          expand_limits(y = 0) +
-         labs(x = "Radius (m)", y = "Divergence Index", title = "Segregation by radius, Stockholm 2022"))
+         labs(x = "Radius (m)", y = "Divergence Index", title = "Segregation by radius"))
 
 ggsave("results/fig_map_local_DI.png", width = 9, height = 8, dpi = 200,
        ggplot(local %>% mutate(radius = factor(paste0(bw, "m"), radius_labels)),
@@ -107,5 +107,5 @@ ggsave("results/fig_map_local_DI.png", width = 9, height = 8, dpi = 200,
          scale_fill_viridis_c(option = "magma", direction = -1,
                               limits = c(0, quantile(local$DI, 0.99, na.rm = TRUE)), oob = scales::squish) +
          coord_equal() +
-         labs(x = NULL, y = NULL, fill = "Local DI", title = "Local Divergence Index, Stockholm 2022") +
+         labs(x = NULL, y = NULL, fill = "Local DI", title = "Local Divergence Index") +
          theme(axis.text = element_blank(), axis.ticks = element_blank(), panel.grid = element_blank()))
