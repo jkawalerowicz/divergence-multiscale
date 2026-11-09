@@ -65,12 +65,12 @@ for (b in c(150, 300, 600, 1000)) {
   cat(sprintf("local sums at %4dm: %d cells in the radius\n", b, nrow(off)))
 }
 
-# Local DI for every Stockholm cell and radius, with the cell's own population
+# Local DI for every cell and radius, with the cell's own population
 local <- bind_rows(focal) %>%
   left_join(cnt %>% transmute(x, y, own_pop = sb + fb_e + fb_ne), by = c("x", "y"))
 
 # -----------------------------------------------------------------------------
-# Summary: DI for Stockholm at each radius
+# Summary: DI at each radius
 # -----------------------------------------------------------------------------
 # DI = mean of local DI weighted by each cell's own population
 summary_bw <- local %>%
@@ -82,7 +82,7 @@ summary_bw <- local %>%
             pop          = sum(own_pop))
 print(summary_bw)
 
-write_csv(summary_bw, "results/DI_stockholm_by_radius.csv")
+write_csv(summary_bw, "results/DI_by_radius.csv")
 write_csv(local,      "results/DI_local_cells.csv")   # cell level: keep out of GitHub
 
 # -----------------------------------------------------------------------------
